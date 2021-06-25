@@ -8,36 +8,20 @@
       hint="Preencha corretamente"
       onChange={this.setDescription}
     />
-    <Input
-      inputMode="tel"
-      type="text"
-      mode="danger"
-      label="Tel."
-      mask="(99) 99999-9999"
-      hint="Preencha corretamente"
-      onChange={this.setPhone}
-    />
-    {this.state.userFound && this.state.userFound.name}
-    <Grid>
-      <Button
-        label={'Procurar'}
-        type='primary'
-        onClick={this.findUser}
-      />
 
-      {/* <Spacing size='sm' /> */}
+    <Grid>
       <Button
         label={'Inserir'}
         type='primary'
         onClick={this.create}
       />
-      {/* <Spacing size='sm' /> */}
 
       <Button
-        label={'Transferir'}
+        label={'Apagar Tudo'}
         type='primary'
-        onClick={this.transfer}
+        onClick={this.delete}
       />
+
     </Grid>
     <Divisor line />
     {this.state.todoList.map(todo => {
@@ -45,8 +29,8 @@
         <View key={todo._id}>
           <CheckItem
             checked={todo.status}
-            onChange={e => {
-              this.onChangeHandler(todo, e)
+            onChange={value => {
+              this.update(todo, value)
             }}
             text={todo.description} />
         </View>
